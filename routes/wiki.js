@@ -70,7 +70,8 @@ router.get("/:slug", async (req, res, next) => {
       }
     });
     if (page === null) {
-      res.sendStatus(404);
+      // res.sendStatus(404);
+      next()
     } else {
       const author = await page.getAuthor();
       res.send(wikiPage(page, author));
@@ -87,7 +88,8 @@ router.get("/:slug/edit", async (req, res, next) => {
     });
 
     if (page === null) {
-      res.sendStatus(404);
+      // res.sendStatus(404);
+      next()
     } else {
       const author = await page.getAuthor();
       res.send(editPage(page, author));
